@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мир 3D Моделирования</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <aside class="sidebar">
+            <header>
+                <h1>3D Modeling</h1>
+                <p class="subtitle">Интерактивный гид</p>
+            </header>
+
+            <section class="steps">
+                <div class="step-card active" onclick="changeStep(1, 'polygons')">
+                    <h3>1. Полигональная сетка</h3>
+                    <p>Основа любой трехмерной модели — вершины, ребра и полигоны.</p>
+                </div>
+                <div class="step-card" onclick="changeStep(2, 'shading')">
+                    <h3>2. Шейдинг и Материалы</h3>
+                    <p>Определяют, как объект взаимодействует со светом (матовость, глянец).</p>
+                </div>
+                <div class="step-card" onclick="changeStep(3, 'texture')">
+                    <h3>3. Текстурирование</h3>
+                    <p>Наложение 2D-изображений на 3D-объект для придания реализма.</p>
+                </div>
+            </section>
+
+            <section class="controls">
+                <h3>Управление сценой:</h3>
+                
+                <div class="control-group">
+                    <label>Отображение:</label>
+                    <div class="btn-grid">
+                        <button onclick="setMode('wireframe')">Сетка</button>
+                        <button onclick="setMode('solid')">Полигоны</button>
+                        <button onclick="setMode('points')">Точки</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Форма геометрии:</label>
+                    <div class="btn-grid">
+                        <button onclick="changeGeometry('cube')">Куб</button>
+                        <button onclick="changeGeometry('sphere')">Сфера</button>
+                        <button onclick="changeGeometry('torus')">Тор</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="colorPicker">Цвет материала:</label>
+                    <input type="color" id="colorPicker" value="#00bbf9">
+                </div>
+
+                <div class="control-group check-group">
+                    <input type="checkbox" id="rotationCheck" checked>
+                    <label for="rotationCheck">Автоматическое вращение</label>
+                </div>
+            </section>
+        </aside>
+
+        <main class="viewport-container">
+            <div id="canvas-holder"></div>
+            <div class="hint">💡 Зажмите ЛКМ для вращения камеры | Колесико — зум</div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
